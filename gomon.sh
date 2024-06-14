@@ -2,7 +2,6 @@
 
 initial_run=true
 
-# Function to restart main.go
 start_server() {
 
     if [ "$initial_run" = false ]; then
@@ -18,10 +17,8 @@ start_server() {
     initial_run=false
 }
 
-# Initial run
 start_server
 
-# Watch for changes in the project directory
 while true; do
     inotifywait -r -e modify,create,delete,move ./ >> /dev/null 2>&1
     start_server
